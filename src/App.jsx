@@ -21,3 +21,38 @@ export default App
 
 // Time stamp: 2:07:40
 // Finished Hero component
+
+// The section wrapper in generator.jsx acts as another component that can Print out hello.
+// If we were to have opening and closing tags with the section wrapper, we can put text
+// inside of those tags as well. This text wont be display unless we specifiy props being
+// passed to the sectionwrapper in its parameters, and call those props like this:
+
+// const { children } = props;
+
+// A section wrapper is boilerplate code that it will always repeat, but it has a section
+// to place whatever code you put inside of its opening and closing tags within the function
+// you call it in!
+
+
+// Instead of rendering four buttons individually, or even making a component to then render four times,
+// we can map an array that has the text for each button and return a button with that text.
+
+// In tailwind, we have to specify border in an element if we want a border. Then we can do styling
+// elements like border-slate-950
+
+// For text editing, take note in generator.jsx where we capitalize text, and where we use the
+// replaceAll('_', " ") to get rid of certain characters.
+
+
+// In generator.jsx, we don't have the buttons within the boilerplate code of header because
+// we want to change those quite drastically for each section.
+
+
+//IMPORTANT POINT
+// When we render the option selection in the 2nd section, we need to map through each of the items
+// that are subcategories of the buttons in the first section. In order to map through things, we need
+// arrays.
+// I am saying that when we store data in objects, it is best...
+
+
+// Timestamp 2:33:01
