@@ -4,15 +4,34 @@ import viteLogo from '/vite.svg'
 import Hero from './components/hero'
 import Generator from './components/generator'
 import Workout from './components/workout'
+import { generateWorkout } from './utils/functions'
 
 function App() {
+
+  const [workout, setWorkout] = useState();
+
+  const [poison, setPoison] = useState('individual');
+  const [muscles, setMuscles] = useState([]);
+  const [goals, setGoals] = useState('strength_power');
+
+  function updateWorkout() {
+    let newWorkout = generateWorkout(poison, muscles, goals)
+    setWorkout(newWorkout)
+  }
 
   return (
     <main className="min-h-screen flex flex-col bg-gradient-to-r from-slate-800
     to-slate-950 text-white text-sm sm:text-base">
       <Hero />
-      <Generator />
-      <Workout />
+      <Generator 
+      poison={poison}
+      setPoison={setPoison}
+      muscles={muscles}
+      setMuscles={setMuscles}
+      goals={goals}
+      setGoals={setGoals}
+      />
+      {workout && (<Workout workout={workout}/>)}
     </main>
   )
 }
@@ -56,3 +75,8 @@ export default App
 
 
 // Timestamp 2:33:01
+
+// Timestamp 2:47:07. My goal is to understand what he's doing as he is doing it, then go through
+// and make a document or paper explaining the complete thought process in designing this type of web page.
+// Then I'm going to make it myself following my intuition and the guide paper. Then I'm moving on
+// to the machine learning.
