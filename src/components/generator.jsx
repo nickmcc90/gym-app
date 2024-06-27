@@ -5,9 +5,7 @@ import Button from './button';
 
 export default function Generator(props) {
 
-  const { poison, setPoison, muscles, setMuscles, goals, setGoals, updateWorkout} = props;
-
-  console.log(poison)
+  const { poison, setPoison, muscles, setMuscles, goals, setGoals, updateWorkout } = props;
 
   const [modal, setModal] = useState(false);
 
