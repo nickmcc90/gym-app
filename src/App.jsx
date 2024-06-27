@@ -15,7 +15,10 @@ function App() {
   const [goals, setGoals] = useState('strength_power');
 
   function updateWorkout() {
-    let newWorkout = generateWorkout(poison, muscles, goals)
+    if (muscles.length < 1) {   // we don't want to do anything if there are no muscles to train. People can just skip past the second section.
+      return
+    }
+    let newWorkout = generateWorkout({poison, muscles, goals})
     setWorkout(newWorkout)
   }
 
@@ -30,6 +33,7 @@ function App() {
       setMuscles={setMuscles}
       goals={goals}
       setGoals={setGoals}
+      updateWorkout={updateWorkout}
       />
       {workout && (<Workout workout={workout}/>)}
     </main>
