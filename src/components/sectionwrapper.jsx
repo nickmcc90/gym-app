@@ -2,10 +2,10 @@ import React from 'react'
 
 export default function Sectionwrapper(props) {
 
-  const { children, header, title } = props;
+  const { children, header, title, id } = props;
 
   return (
-    <section className='min-h-screen flex flex-col gap-[60px]'>
+    <section id={id} className='min-h-screen flex flex-col gap-[60px]'>
       <div className="bg-slate-950 py-10 flex flex-col justify-center
       items-center gap-4">
         <p className='uppercase font-medium'>{header}</p> {/* For fun, we brought in an array as a prop called title that we bring into the h2 tag. We did this actually because we wanted to style ONE of the words in the sentence,*/}

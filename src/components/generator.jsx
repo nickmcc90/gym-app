@@ -54,7 +54,7 @@ export default function Generator(props) {
   }
 
   return (    // Consider the header tag and the div with button selection. We have this pair show up 3 times, all within a Sectionwrapper tag. The contents within sectionwrapper appear first on the page, then the stuff inside sectionwrapper.
-    <Sectionwrapper header={"generate your workout"}  // It's only possible to display text within the sectionwrapper tags when we explicity take props in the form of children within sectionwrapper.
+    <Sectionwrapper id={'generate'} header={"generate your workout"}  // It's only possible to display text within the sectionwrapper tags when we explicity take props in the form of children within sectionwrapper.
     title={["It's", "Huge", "o'clock"]}>
       <Header index={"01"} title={"Pick your poison"} description={"Select the workout you wish to endure."}/>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mx-auto">
@@ -114,7 +114,10 @@ export default function Generator(props) {
             )
           })}
       </div>
-      <Button func={updateWorkout} text="Formulate"/>
+      <Button func={() => {
+        updateWorkout()
+        window.location.href = "#workout"
+        }} text="Formulate"/>
     </Sectionwrapper>
   )
 }

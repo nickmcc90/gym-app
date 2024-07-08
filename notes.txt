@@ -1,0 +1,79 @@
+In order to have the window page direct you to different parts of the website
+(scroll you there), you need a sectionwrapper with an id parameter to pass in.
+
+Step 1: 
+
+
+import React from 'react'
+
+export default function Sectionwrapper(props) {
+
+  const { children, header, title, id } = props;
+
+  return (
+    <section id={id} className='min-h-screen flex flex-col gap-[60px]'>
+      <div className="bg-slate-950 py-10 flex flex-col justify-center
+      items-center gap-4">
+        <p className='uppercase font-medium'>{header}</p> {/* For fun, we brought in an array as a prop called title that we bring into the h2 tag. We did this actually because we wanted to style ONE of the words in the sentence,*/}
+        <h2 className='font-semibold text-3xl sm:text-4xl 
+        md:text-5xl lg:text-6xl'>{title[0]} <span className='uppercase text-blue-400'>{title[1]}</span> {title[2]}</h2> {/* so the way to do this was to pass the sentence in an array, then wrap the special word into a span. */}
+      </div>
+      {children}
+    </section>
+
+  )
+}
+
+Here we have the id passed in as props to a certain Sectionwrapper.
+
+Step 2: 
+
+  return (    // Consider the header tag and the div with button selection. We have this pair show up 3 times, all within a Sectionwrapper tag. The contents within sectionwrapper appear first on the page, then the stuff inside sectionwrapper.
+    <Sectionwrapper id={'generate'} header={"generate your workout"}  // It's only possible to display text within the sectionwrapper tags when we explicity take props in the form of children within sectionwrapper.
+    title={["It's", "Huge", "o'clock"]}>
+      <Header index={"01"} title={"Pick your poison"} description={"Select the workout you wish to endure."}/>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mx-auto">
+          {Object.keys(WORKOUTS).map((type, typeIndex) => {
+            return (
+              <button onClick={() => {    // clicking a button sets the workout scheme in a variable. We set a specific key to the button, because we are mapping the buttons. The className attribute is wrapped in curly braces so that we can apply conditional js to the class. 
+                setMuscles([])
+                setPoison(type);            // If the type of button that it is (there are 4) matches with the state variable (it should match when you click a button, for only one button) we can make the button stay highlighted as it is selected.
+              }} key={typeIndex} className={"px-8 py-4 border border-blue-600 duration-200 hover:border-blue-600 bg-slate-950 rounded-md " 
+              + (type === poison ? "border-blue-600" : "border-slate-950") }>
+                <p className="capitalize">  {/* we can capitalize the first letter of imported text */}
+                  {type.replaceAll('_', " ")}   {/* this replace all function is helpful for imported data */}
+                </p>
+              </button>
+            )
+          })}
+      </div>
+  )
+
+In this random snippet of code, we have Sectionwrapper being called in another component. The id given
+here is 'generate'. Giving something an id can be referenced elsewhere with '#', just like a class is
+referenced with '.'
+
+Step 3:
+
+      <Button func={() => {
+        window.location.href = '#generate'
+      }} text="Accept & Begin"/>
+
+
+Here we have a button that when pressed changes the window location to any location that has
+an id of 'generate'. The '#' in front is to indicate the id, instead of a class or something.
+
+
+The premise is we can give any component a premade id and use a function in a button or link to
+have the window location be that id. This works well with Sectionwrappers that display other components
+within it as props so that literally each section is wrapped.
+
+
+
+Adding scroll behavior smooth to the html tag like this within css:
+
+html {
+  scroll-behavior: smooth
+}
+
+Allows a window location change like described above to be smooth.
