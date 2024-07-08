@@ -9,6 +9,8 @@ export default function Generator(props) {
 
   const [modal, setModal] = useState(false);
 
+  console.log(goals)
+
   function updateMuscles(muscleGroup) {
     if(muscles.includes(muscleGroup)) {  // if we choose individual, and choose the same thing twice, we get rid of it.
       setMuscles(muscles.filter(val => val !== muscleGroup))

@@ -18,7 +18,8 @@ function App() {
     if (muscles.length < 1) {   // we don't want to do anything if there are no muscles to train. People can just skip past the second section.
       return
     }
-    let newWorkout = generateWorkout({poison, muscles, goals})
+    let newWorkout = generateWorkout({ poison, muscles, goals })
+    console.log(newWorkout)
     setWorkout(newWorkout)
   }
 
@@ -84,3 +85,6 @@ export default App
 // and make a document or paper explaining the complete thought process in designing this type of web page.
 // Then I'm going to make it myself following my intuition and the guide paper. Then I'm moving on
 // to the machine learning.
+
+// timestamp: 2:59:30
+// boutta add styles to the button
